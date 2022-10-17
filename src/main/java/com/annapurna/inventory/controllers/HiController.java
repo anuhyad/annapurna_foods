@@ -4,9 +4,11 @@ import com.annapurna.inventory.entities.Provider;
 import com.annapurna.inventory.services.HiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,5 +36,10 @@ public class HiController {
         service.someAsyncMethod();
 
         return new HashMap<String, String>();  // returns empty braces
+    }
+
+    @RequestMapping(value = "/user")
+    public Principal user(Principal principal) {
+        return principal;
     }
 }
